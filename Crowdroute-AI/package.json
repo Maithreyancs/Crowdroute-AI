@@ -1,0 +1,11 @@
+{
+  "name": "crowdroute-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CrowdRoute AI root runner scripts",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

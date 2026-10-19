@@ -1,0 +1,211 @@
+{
+  "scenario_metadata": {
+    "scenario_id": "SCN-SAKTHI-FEST-2026-01",
+    "title": "Temple Festival Closing Night Synthetic Demo",
+    "data_nature": "SYNTHETIC DEMO DATA",
+    "disclaimer": "SYNTHETIC DEMO DATA ONLY. All passenger counts, travel times, and fleet behaviors are synthetic planning estimates and must NOT be interpreted as real passenger measurements or direct vehicle dispatch controls.",
+    "created_for": "SAKTHI HACKFEST'26 - Generative AI Domain",
+    "configured_fleet_assumption": "Total fleet of 16 buses: 12 assigned to Main Bus Stand, 4 assigned to Peripheral Stop. Fleet size is fixed and strictly conserved."
+  },
+  "festival_programme": {
+    "event_name": "Grand Temple Car Festival - Maha Deepam Finale",
+    "scheduled_event_end_time": "21:30",
+    "time_horizon": {
+      "start_time": "21:00",
+      "end_time": "23:00",
+      "interval_minutes": 15
+    },
+    "expected_total_attendance": 40000,
+    "exiting_passenger_fraction": 0.85,
+    "demand_distribution": {
+      "STOP_MAIN": 0.90,
+      "STOP_PERIPHERAL": 0.005,
+      "STOP_EAST_GATE": 0.095
+    }
+  },
+  "weather": {
+    "condition": "clear",
+    "surge_concentration_factor": 1.0,
+    "travel_time_multiplier": 1.0,
+    "notes": "Clear weather baseline. Rain mode would compress exit window and increase road transit delays."
+  },
+  "stops": [
+    {
+      "stop_id": "STOP_MAIN",
+      "name": "Main Bus Stand (Central Terminal)",
+      "description": "Primary transit hub located 400m from main temple gate. Primary exit bottleneck.",
+      "min_service_buses": 2,
+      "baseline_scheduled_buses": 12,
+      "supported_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"],
+      "latitude": 12.2285,
+      "longitude": 79.0700
+    },
+    {
+      "stop_id": "STOP_PERIPHERAL",
+      "name": "Peripheral Ring Stop (North Bypass)",
+      "description": "Secondary transit stop 2.0 km north of town center with 4 idle scheduled buses.",
+      "min_service_buses": 1,
+      "baseline_scheduled_buses": 4,
+      "supported_routes": ["ROUTE-NORTH-BYPASS", "ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"],
+      "latitude": 12.2450,
+      "longitude": 79.0680
+    },
+    {
+      "stop_id": "STOP_EAST_GATE",
+      "name": "East Temple Gate Feeder Stop",
+      "description": "Pedestrian feeder corridor leading towards eastern residential and parking zones.",
+      "min_service_buses": 0,
+      "baseline_scheduled_buses": 0,
+      "supported_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"],
+      "latitude": 12.2260,
+      "longitude": 79.0830
+    }
+  ],
+  "travel_time_matrix_minutes": {
+    "STOP_MAIN": {
+      "STOP_MAIN": 0,
+      "STOP_PERIPHERAL": 15,
+      "STOP_EAST_GATE": 10
+    },
+    "STOP_PERIPHERAL": {
+      "STOP_MAIN": 15,
+      "STOP_PERIPHERAL": 0,
+      "STOP_EAST_GATE": 20
+    },
+    "STOP_EAST_GATE": {
+      "STOP_MAIN": 10,
+      "STOP_PERIPHERAL": 20,
+      "STOP_EAST_GATE": 0
+    }
+  },
+  "fleet": [
+    {
+      "bus_id": "BUS-M01",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 65,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M02",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 65,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M03",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M04",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M05",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M06",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M07",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M08",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M09",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M10",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M11",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-M12",
+      "initial_stop_id": "STOP_MAIN",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL", "ROUTE-INTERCITY"]
+    },
+    {
+      "bus_id": "BUS-P01",
+      "initial_stop_id": "STOP_PERIPHERAL",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-NORTH-BYPASS", "ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"]
+    },
+    {
+      "bus_id": "BUS-P02",
+      "initial_stop_id": "STOP_PERIPHERAL",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-NORTH-BYPASS", "ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"]
+    },
+    {
+      "bus_id": "BUS-P03",
+      "initial_stop_id": "STOP_PERIPHERAL",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-NORTH-BYPASS", "ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"]
+    },
+    {
+      "bus_id": "BUS-P04",
+      "initial_stop_id": "STOP_PERIPHERAL",
+      "capacity": 60,
+      "status": "available",
+      "compatible_stops": ["STOP_MAIN", "STOP_PERIPHERAL", "STOP_EAST_GATE"],
+      "compatible_routes": ["ROUTE-NORTH-BYPASS", "ROUTE-MAIN-TOWN", "ROUTE-CROSS-REGIONAL"]
+    }
+  ]
+}
